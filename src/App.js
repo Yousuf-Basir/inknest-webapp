@@ -27,9 +27,9 @@ function App() {
     <div className="App relative h-screen flex overflow-hidden bg-white">
       <Router>
         <Sidebar />
-        <div className="flex flex-col w-0 flex-1 overflow-hidden">
+        <div className="flex flex-col w-0 flex-1 overflow-hidden ">
           {/* SearchHeader is mobile only */}
-          <SearchHeader /> 
+          {/* <SearchHeader />  */}
 
           {/* Router paths */}
 
