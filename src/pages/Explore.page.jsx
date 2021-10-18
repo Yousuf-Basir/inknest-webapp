@@ -40,7 +40,9 @@ const Explore = () => {
     const search = () => {
         if (bookName.length < 4) return;
         setSearchLoading(true);
+        setSearchResult([])
         myRef.current.scrollIntoView();
+
         axios.get(`${process.env.REACT_APP_SERVER_URL}/search?bookName=${bookName}`).then(listHtml => {
             listHtml.data.searchResult.forEach((element, i) => {
                 const doc = new DOMParser().parseFromString(element, "text/html");
