@@ -11,6 +11,7 @@ import SearchHeader from "./components/SearchHeader.component";
 import { useState } from "react";
 import CurrentFileContext from "./tools/currentFileContext";
 import FileViewer from "./pages/FileViewer.page";
+import Explore from "./pages/Explore.page";
 
 function App() {
   const [currentFile, setCurrentFile] = useState({
@@ -41,6 +42,7 @@ function App() {
             <Route path="/shelfs" component={Shelfs} />
             <Route path="/sharedshelfs" component={SharedShelfs} />
             <Route path="/fileviewer" component={FileViewer} />
+            <Route path="/explore" component={Explore} />
           </Switch>
         </div>
       </Router>

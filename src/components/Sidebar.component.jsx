@@ -16,6 +16,7 @@ const navigation = [
     { name: 'My books', href: '/mybooks', icon: BookOpenIcon },
     { name: 'Shelfs', href: '/shelfs', icon: FolderIcon },
     { name: 'Shared shelfs', href: '/sharedshelfs', icon: FolderDownloadIcon },
+    { name: 'Explore', href: '/explore', icon: SearchIcon },
 ]
 const teams = [
     { name: 'Engineering', href: '#', bgColorClass: 'bg-indigo-500' },
