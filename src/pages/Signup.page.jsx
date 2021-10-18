@@ -13,7 +13,7 @@ const Signup = () => {
         console.log(firstName, lastName, email, password);
 
         // POST request for signup
-        axios.post("http://localhost:3001/signup",
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/signup`,
         {
             firstName: firstName.value, 
             lastName: lastName.value, 

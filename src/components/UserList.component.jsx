@@ -13,7 +13,7 @@ export default function UserList({ openState, setOpenState, setSelectedUser }) {
     const [filteredUser, setFilteredUser] = useState([]);
 
     const getAllUsers = () => {
-        axios.get("http://localhost:3001/listusers", {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/listusers`, {
             headers: { "token": accessToken }
         }).then(response => {
             console.log(response.data.userList)

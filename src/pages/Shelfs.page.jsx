@@ -42,7 +42,7 @@ const Shelfs = () => {
     // Handle share shelf
     const setSelectedUser = ({ selectedUserUid, selectedUserName }) => {
         var currentUser = jwt_decode(accessToken);
-        axios.post("http://localhost:3001/share", {
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/share`, {
             "shelfUid": shelfToShare.shelfUid,
             "sharedByUid": currentUser.userUid,
             "sharedWithUid": selectedUserUid,
@@ -59,7 +59,7 @@ const Shelfs = () => {
 
     const getUserShelf = () => {
         setShelfList([]);
-        axios.get("http://localhost:3001/shelf", {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/shelf`, {
             headers: {
                 "token": accessToken
             },
@@ -94,7 +94,7 @@ const Shelfs = () => {
 
     const handleCreateNewShelf = (e) => {
         e.preventDefault();
-        axios.put("http://localhost:3001/shelf", {
+        axios.put(`${process.env.REACT_APP_SERVER_URL}/shelf`, {
             "shelfName": shelfNameValue,
             "isOpen": enabled ? 1 : 0,
             "shelfDescription": shelfDescriptionValue
@@ -111,7 +111,7 @@ const Shelfs = () => {
     const handleDeleteShelf = (shelfUid) => {
         let deleteConfirmation = window.confirm("By deleting this shelf all books of this shelf will be deleted. Delete anyway?");
         if (deleteConfirmation) {
-            axios.delete(`http://localhost:3001/shelf?shelfUid=${shelfUid}`, {
+            axios.delete(`${process.env.REACT_APP_SERVER_URL}/shelf?shelfUid=${shelfUid}`, {
                 headers: { "token": accessToken }
             }).then(response => {
                 getUserShelf();

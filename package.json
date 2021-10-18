@@ -12,6 +12,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.23.0",
+    "env-cmd": "^10.1.0",
     "epubjs": "^0.3.88",
     "jszip": "^3.7.1",
     "jwt-decode": "^3.1.2",
@@ -28,8 +29,8 @@
     "xmldom": "^0.6.0"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "env-cmd -e development craco start",
+    "build": "env-cmd -e production craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },

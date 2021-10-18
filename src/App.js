@@ -23,6 +23,8 @@ function App() {
     }
   });
 
+  console.log(process.env.REACT_APP_SERVER_URL)
+
   return (
     <CurrentFileContext.Provider value={ {currentFile, setCurrentFile} }>
     <div className="App relative h-screen flex overflow-hidden bg-white">

@@ -30,7 +30,7 @@ const SharedShelf = () => {
     const [openCreateNew, setOpenCreateNew] = useState(false);
 
     const getSharedByMeList = () => {
-        axios.get("http://localhost:3001/shared-by-me", {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/shared-by-me`, {
             headers: { "token": accessToken }
         }).then((response) => {
             setSharedByMeList(response.data.sharedByMeList)
@@ -40,7 +40,7 @@ const SharedShelf = () => {
     // Handle share shelf
     const setSelectedUser = ({ selectedUserUid, selectedUserName }) => {
         var currentUser = jwt_decode(accessToken);
-        axios.post("http://localhost:3001/share", {
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/share`, {
             "shelfUid": shelfToShare.shelfUid,
             "sharedByUid": currentUser.userUid,
             "sharedWithUid": selectedUserUid,
@@ -60,7 +60,7 @@ const SharedShelf = () => {
     const handleUnshare = (sharedWithUid, sharedShelfUid) => {
         let confirmUnshare = window.confirm("Unshare this shelf?");
         if (confirmUnshare) {
-            axios.delete(`http://localhost:3001/share?sharedWithUid=${sharedWithUid}&sharedShelfUid=${sharedShelfUid}`, {
+            axios.delete(`${process.env.REACT_APP_SERVER_URL}/share?sharedWithUid=${sharedWithUid}&sharedShelfUid=${sharedShelfUid}`, {
                 headers: { "token": accessToken }
             }).then(response => {
                 getSharedByMeList();
@@ -70,7 +70,7 @@ const SharedShelf = () => {
 
     const getSharedShelf = () => {
         setShelfList([]);
-        axios.get("http://localhost:3001/shared-with-me", {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/shared-with-me`, {
             headers: {
                 "token": accessToken
             },
@@ -101,7 +101,7 @@ const SharedShelf = () => {
     const handleDeleteSharedWithMe = (sharedShelfUid) => {
         let confirmUnshare = window.confirm("Remove this shared shelf?");
         if (confirmUnshare) {
-            axios.delete(`http://localhost:3001/shared-with-me?sharedShelfUid=${sharedShelfUid}`, {
+            axios.delete(`${process.env.REACT_APP_SERVER_URL}/shared-with-me?sharedShelfUid=${sharedShelfUid}`, {
                 headers: { "token": accessToken }
             }).then(response => {
                 console.log(response.data)

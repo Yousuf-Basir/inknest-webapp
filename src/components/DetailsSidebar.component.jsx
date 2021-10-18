@@ -20,7 +20,7 @@ const DetailsSidebar = () => {
     const handleDeleteBook = (fileUid) => {
         let confirmDelete = window.confirm("Are you sure you want to delete this book?");
         if (confirmDelete) {
-            axios.delete(`http://localhost:3001/file?fileUid=${fileUid}`, {
+            axios.delete(`${process.env.REACT_APP_SERVER_URL}/file?fileUid=${fileUid}`, {
                 headers: { "token": accessToken }
             }).then((response) => {
                 console.log(response.data)

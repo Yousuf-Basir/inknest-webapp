@@ -34,7 +34,7 @@ const MyBooks = ({ shelfUidTab, shelfName, sharedBy }) => {
 
     // Get all books of current user
     const getUserShelf = () => {
-        axios.get("http://localhost:3001/shelf", {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/shelf`, {
             headers: {
                 "token": accessToken
             },
@@ -44,7 +44,7 @@ const MyBooks = ({ shelfUidTab, shelfName, sharedBy }) => {
     }
 
     const getFilesByShelfUid = (shelfUid) => {
-        axios.get(`http://localhost:3001/file?shelfUid=${shelfUid}`, {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/file?shelfUid=${shelfUid}`, {
             headers: { "token": accessToken }
         }).then((response) => {
             // server sends 404 status code if there is no book in this shelf
@@ -60,7 +60,7 @@ const MyBooks = ({ shelfUidTab, shelfName, sharedBy }) => {
     }
 
     const openFile = (file) => {
-        fetch(`http://localhost:3001/file/get-file-url?token=${accessToken}&fileName=${file.File_Name}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}/file/get-file-url?token=${accessToken}&fileName=${file.File_Name}`)
             .then(res => res.blob())
             .then(blob => {
                 setCurrentFile({
@@ -180,7 +180,7 @@ const MyBooks = ({ shelfUidTab, shelfName, sharedBy }) => {
                                 {
                                     file.Mimetype == "pdf"
                                         ? <img
-                                            src={`http://localhost:3001/file/get-thumbnail-url?token=${accessToken}&fileName=${file.File_Name}`}
+                                            src={`${process.env.REACT_APP_SERVER_URL}/file/get-thumbnail-url?token=${accessToken}&fileName=${file.File_Name}`}
                                             alt=""
                                             className={classNames(
                                                 file.File_UID == selectedFileUid ? '' : 'group-hover:opacity-75',

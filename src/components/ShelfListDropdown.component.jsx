@@ -21,7 +21,7 @@ const ShelfListDropdown = () => {
   // get shelf list
   const [userShelfs, setUserShelfs] = useState([]);
   const getUserShelf = () => {
-    axios.get("http://localhost:3001/shelf", {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/shelf`, {
       headers: {
         "token": accessToken
       },
@@ -45,7 +45,7 @@ const ShelfListDropdown = () => {
     var pdfThumbnail = await localforage.getItem("pdfThumbnail");
     formData.append('pdfThumbnail', pdfThumbnail);
 
-    axios.post("http://localhost:3001/file", formData, {
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/file`, formData, {
       headers: {
         'content-type': 'multipart/form-data; boundary=<calculated when request is sent>"',
         "token": accessToken

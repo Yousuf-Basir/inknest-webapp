@@ -41,7 +41,7 @@ const Explore = () => {
         if (bookName.length < 4) return;
         setSearchLoading(true);
         myRef.current.scrollIntoView();
-        axios.get(`http://localhost:3001/search?bookName=${bookName}`).then(listHtml => {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/search?bookName=${bookName}`).then(listHtml => {
             listHtml.data.searchResult.forEach((element, i) => {
                 const doc = new DOMParser().parseFromString(element, "text/html");
                 const fileHref = doc.querySelector(".file-left a").getAttribute("href");
@@ -69,7 +69,7 @@ const Explore = () => {
         let errorTimeout = setTimeout(() => {
             setLoading(false);
         }, 30000);
-        axios.post("http://localhost:3001/getDwonloadLink", {
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/getDwonloadLink`, {
             "fileLink": href,
             "bookTitle": title
         }).then(response => {
