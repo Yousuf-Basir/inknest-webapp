@@ -84,7 +84,7 @@ const SharedShelf = () => {
                         ...oldArray,
                         {
                             name: shelf.Shelf_Name,
-                            href: `http://localhost:3000/mybooks?shelfUidTab=${shelf.Shelf_UID}&shelfName=${shelf.Shelf_Name}&sharedBy=${shelf.Shared_By}`,
+                            href: `${process.env.REACT_APP_APP_URL}/mybooks?shelfUidTab=${shelf.Shelf_UID}&shelfName=${shelf.Shelf_Name}&sharedBy=${shelf.Shared_By}`,
                             shelfDescription: shelf.Shared_By,
                             bgColor: "bg-blue-400",
                             sharedShelfUid: shelf.Shared_Shelf_UID,

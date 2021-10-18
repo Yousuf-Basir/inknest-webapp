@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router-dom";
 import { reactLocalStorage } from "reactjs-localstorage";
 import PageTitleAction from "../components/PageTitleAction.component";
 import CurrentFileContext from "../tools/currentFileContext";
@@ -21,7 +21,16 @@ const sortShelf = (arrayOfObjects) => {
     return byDate;
 }
 
-const MyBooks = ({ shelfUidTab, shelfName, sharedBy }) => {
+const MyBooks = () => {
+    function useQuery() {
+       return new URLSearchParams(useLocation().search);
+    }
+    
+    const query = useQuery();
+    const shelfUidTab = query.get("shelfUidTab");
+    const shelfName = query.get("shelfName");
+    const sharedBy = query.get("sharedBy");
+    
     const accessToken = reactLocalStorage.get("accessToken");
     const [shelfs, setShelfs] = useState([]);
     const [selectedShelfUid, setSelectedShelfUid] = useState(shelfs[0]);
@@ -101,8 +110,8 @@ const MyBooks = ({ shelfUidTab, shelfName, sharedBy }) => {
 
     return (
         <div className="max-w-7xl sm:px-6 lg:px-8">
-            <PageTitleAction pageTitle="My books" />
-            {/* {
+            
+            {
                 shelfName && sharedBy
                     ? <div className="flex">
                         <h1 className="flex-1 text-xl font-bold text-gray-900">{shelfName}</h1>
@@ -111,10 +120,8 @@ const MyBooks = ({ shelfUidTab, shelfName, sharedBy }) => {
                             <span>{sharedBy}</span>
                         </div>
                     </div>
-                    : <div className="flex">
-                        <h1 className="flex-1 text-2xl font-bold text-gray-900">My books</h1>
-                    </div>
-            } */}
+                    :<PageTitleAction pageTitle="My books" />
+            }
 
             {/* Tabs */}
             <div className="mt-3 sm:mt-2">

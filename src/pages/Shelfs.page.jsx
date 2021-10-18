@@ -73,7 +73,7 @@ const Shelfs = () => {
                         {
                             name: shelf.Shelf_Name,
                             initials: shelf.Is_Open == 1 ? "GlobeIcon" : "LockClosedIcon",
-                            href: `http://localhost:8080/mybooks?shelfUidTab=${shelf.Shelf_UID}`,
+                            href: `${process.env.REACT_APP_APP_URL}/mybooks?shelfUidTab=${shelf.Shelf_UID}`,
                             shelfDescription: shelf.Shelf_Description,
                             bgColor: shelf.Is_Open == 1 ? "bg-green-500" : "bg-purple-600",
                             shelfUid: shelf.Shelf_UID,
