@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Document, Page } from 'react-pdf';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import { ChevronLeftIcon, ChevronRightIcon, ZoomInIcon, ZoomOutIcon } from '@heroicons/react/solid'
@@ -35,7 +35,7 @@ export default ({ file }) => {
   function onDocumentLoadSuccess(doc) {
     setNumPages(doc.numPages);
     let pl = [];
-    for (var i = 1; i < numPages; i++) {
+    for (var i = 1; i < doc.numPages; i++) {
       pl.push(i);
     }
     setPageList(pl);
@@ -47,12 +47,14 @@ export default ({ file }) => {
 
   if (!file) { return <>No file provided</> }
 
+  useEffect(() => {
+    console.log(pageList);
+  }, [pageList])
+
   return (
-    <div className="overflow-x-auto shadow-2xl">
+    <div className="overflow-hidden shadow-2xl">
       {/* page navigation controls */}
       <div className="z-50 flex justify-center items-center space-x-2">
-
-
         <span className="z-50 relative inline-flex shadow-sm rounded-md">
           <button
             onClick={() => setPageNumber((pageNumber) => pageNumber - 1)}
@@ -73,7 +75,7 @@ export default ({ file }) => {
               defaultValue="Canada"
             >
               {pageList.map(val => (
-                <option key={val} value={val}>{val}</option>
+                <option className="text-center" key={val} value={val}>page: {val}</option>
               ))}
             </select>
           </div>
@@ -110,6 +112,7 @@ export default ({ file }) => {
       </div>
 
       {/* PDF renderer */}
+      <div className="overflow-x-auto t-6">
       <Document
       className="-mt-10"
         file={file}
@@ -124,6 +127,7 @@ export default ({ file }) => {
           renderTextLayer={false}
         />
       </Document>
+      </div>
       {/* <p>Page {pageNumber} of {numPages}</p> */}
     </div>
   );

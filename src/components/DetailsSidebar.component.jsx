@@ -36,23 +36,22 @@ const DetailsSidebar = () => {
     }
 
     return (
-        <aside className="w-full lg:w-96 bg-white p-8 border-l border-gray-200 overflow-y-auto lg:block absolute bottom-0 lg:relative">
+        <aside className="w-full lg:w-96 bg-transparent p-1 lg:p-8 border-l border-gray-200 overflow-y-auto lg:block absolute bottom-0 lg:relative">
             {/* Bottom details toggle panel */}
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center lg:hidden bg-white bg-opacity-0 lg:bg-opacity-100 ">
                 <button
                     onClick={()=>setOpenDetails(!openDetails)}
                     type="button"
-                    className="space-x-2 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="shadow-xl m-2 space-x-2 inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                     {openDetails?<XCircleIcon className="h-6"/>:<MenuIcon className="h-6" />}
                     <span>{openDetails?"Close":currentFile.fileInfo.fileUid?"View details":"Save to shelf"}</span>
                 </button>
             </div>
 
-            {
-                openDetails
-                ?<div className="pb-16 space-y-6">
-                <div className="mt-4 flex items-start justify-between">
+            {/* details panel body */}
+            <div className={`${openDetails?"block":"hidden"} bg-white p-4 lg:p-0 lg:block pb-16 space-y-6`}>
+                <div className="mt-0 bg:mt-6 flex items-start justify-between">
                     <div className="space-y-6">
                         <h2 className="text-md lg:text-xl font-medium text-gray-900">
                             <span className="sr-only">Details for </span>
@@ -94,8 +93,6 @@ const DetailsSidebar = () => {
                     }
                 </div>
             </div>
-            :null
-            }
         </aside>
     )
 }

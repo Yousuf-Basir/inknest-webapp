@@ -1,8 +1,7 @@
 import axios from "axios";
-import { useContext, useEffect, useRef, useState } from "react";
-import CurrentFileContext from "../tools/currentFileContext";
+import { useEffect, useRef, useState } from "react";
 import Skeleton from "react-loading-skeleton";
-import { useStore } from "react-redux";
+import SidebarToggleButton from "../components/SidebarToggleButton.component";
 
 const Loading = () => {
     const [msg, setMsg] = useState("Getting your book ready");
@@ -21,8 +20,8 @@ const Loading = () => {
     return (
         <div className="absolute h-full w-full top-0 left-0 bg-gray-700 z-50 bg-opacity-95">
             <div className="w-full h-full flex flex-col justify-center items-center space-y-4">
-                <svg class="spinner h-20 w-20" viewBox="0 0 50 50">
-                    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                <svg className="spinner h-20 w-20" viewBox="0 0 50 50">
+                    <circle class="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
                 </svg>
                 <p className="text-white text-5xl">{msg}</p>
             </div>
@@ -68,9 +67,6 @@ const Explore = () => {
     const getDownloadLink = (href, title) => {
         console.log("sending href ", href);
         setLoading(true);
-        let errorTimeout = setTimeout(() => {
-            setLoading(false);
-        }, 30000);
         axios.post(`${process.env.REACT_APP_SERVER_URL}/getDwonloadLink`, {
             "fileLink": href,
             "bookTitle": title
@@ -78,7 +74,6 @@ const Explore = () => {
             console.log(response.data);
             const { fileInfo } = response.data;
             setLoading(false);
-            clearTimeout(errorTimeout);
 
             let confirmDownload = window.confirm("Download this ebook?");
             if (confirmDownload) {
@@ -91,7 +86,23 @@ const Explore = () => {
 
 
     return (
-        <div className={`bg-white overflow-y-auto ${searchResult.length ? "py-2 sm:py-0" : "py-16 sm:py-24"}`}>
+        <div className={`bg-white overflow-y-auto ${searchResult.length ? "py-2 sm:py-0" : ""}`}>
+            <div className="bg-white mb-12 lg:mb-0">
+                <header className="py-6">
+                    <div className="flex justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex">
+                            <SidebarToggleButton />
+                            <h1 className="text-2xl font-bold text-gray-900">
+                                Explore books
+                            </h1>
+                        </div>
+                    </div>
+
+
+                </header>
+            </div>
+
+
             <div className={`relative ${searchResult.length ? "sm:py-4" : "sm:py-16"}`}>
                 {/* Dots in background */}
                 <div aria-hidden="true" className="hidden sm:block ">
@@ -140,7 +151,7 @@ const Explore = () => {
                                     Find your favorit books
                                 </h2>
                                 <p className="mt-4 mx-auto max-w-2xl text-lg text-indigo-200">
-                                    Ask pottasha which book to read next
+                                    Search in millions of ebook collection
                                 </p>
                             </div>
                             <div className="mt-8 sm:mx-auto sm:max-w-lg sm:flex">

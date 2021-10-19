@@ -7,7 +7,7 @@ import CurrentFileContext from "../tools/currentFileContext";
 import formatBytes from "../tools/formatByte";
 import { UserIcon } from "@heroicons/react/solid";
 import bookimage from "../assets/book.png"
-import SidebarToggleButton from "../components/SidebarToggleButton.component";
+import getCurrentUser from "../tools/getCurrentUser";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -21,16 +21,23 @@ const sortShelf = (arrayOfObjects) => {
     return byDate;
 }
 
+const NothingHere = () => (
+    <div className="flex flex-col w-full py-20 justify-center items-center" style={{ height: "calc(100vh - 16rem)" }}>
+        <p className="text-gray-400">Nothing here</p>
+        <p className="text-gray-600">Click <b>Add book</b> to add new books in this shelf </p>
+    </div>
+)
+
 const MyBooks = () => {
     function useQuery() {
-       return new URLSearchParams(useLocation().search);
+        return new URLSearchParams(useLocation().search);
     }
-    
+
     const query = useQuery();
     const shelfUidTab = query.get("shelfUidTab");
     const shelfName = query.get("shelfName");
     const sharedBy = query.get("sharedBy");
-    
+
     const accessToken = reactLocalStorage.get("accessToken");
     const [shelfs, setShelfs] = useState([]);
     const [selectedShelfUid, setSelectedShelfUid] = useState(shelfs[0]);
@@ -58,7 +65,7 @@ const MyBooks = () => {
         }).then((response) => {
             // server sends 404 status code if there is no book in this shelf
             setFilesOfShelf(response.data);
-            
+
             // setFilesOfShelf(response.data)
         }).catch(err => {
             if (err.response.status == 404) {
@@ -101,6 +108,9 @@ const MyBooks = () => {
 
 
     useEffect(() => {
+        if(!getCurrentUser()){
+            history.push("/signin");
+        }
         getUserShelf();
         if (shelfUidTab) {
             setSelectedShelfUid(shelfUidTab);
@@ -110,17 +120,17 @@ const MyBooks = () => {
 
     return (
         <div className="max-w-7xl sm:px-6 lg:px-8">
-            
+
             {
                 shelfName && sharedBy
                     ? <div className="flex">
                         <h1 className="flex-1 text-xl font-bold text-gray-900">{shelfName}</h1>
                         <div className="text-indigo-700 flex items-center space-x-2">
-                            <UserIcon className="h-4 w-4 inline" /> 
+                            <UserIcon className="h-4 w-4 inline" />
                             <span>{sharedBy}</span>
                         </div>
                     </div>
-                    :<PageTitleAction pageTitle="My books" />
+                    : <PageTitleAction pageTitle="My books" />
             }
 
             {/* Tabs */}
@@ -130,6 +140,7 @@ const MyBooks = () => {
                         Select a shelf
                     </label>
                     <select
+                        onChange={(e) => setSelectedShelfUid(e.target.value)}
                         id="tabs"
                         name="tabs"
                         className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
@@ -137,7 +148,7 @@ const MyBooks = () => {
                     >
                         {
                             shelfs.map((shelf) => (
-                                <option onClick={() => setSelectedShelfUid(shelf.Shelf_UID)} key={shelf.Shelf_UID}>{shelf.Shelf_Name}</option>
+                                <option key={shelf.Shelf_UID} value={shelf.Shelf_UID}> {shelf.Shelf_Name}</option>
                             ))
                         }
                     </select>
@@ -166,7 +177,8 @@ const MyBooks = () => {
 
             {/* Gallery */}
             <section className="mt-8 pb-16" aria-labelledby="gallery-heading">
-                <ul
+                {
+                    !filesOfShelf.length?<NothingHere />:<ul
                     role="list"
                     className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
                 >
@@ -214,6 +226,8 @@ const MyBooks = () => {
                         </li>
                     ))}
                 </ul>
+                }
+                
             </section>
         </div>
     )

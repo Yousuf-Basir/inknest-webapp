@@ -11,9 +11,11 @@ const EpubViewer = ({ file }) => {
         }
     }
 
-    useEffect(() => {
-        removeElementsByClass("epub-container");
-    }, [file])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         removeElementsByClass("epub-container");
+    //     }, 3000)
+    // }, [file])
 
     var ePubInstance = ePub(file);
     var rendition = ePubInstance.renderTo("viewer", {

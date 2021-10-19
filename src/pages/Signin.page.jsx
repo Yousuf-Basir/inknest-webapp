@@ -1,6 +1,8 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { reactLocalStorage } from "reactjs-localstorage";
+import getCurrentUser from "../tools/getCurrentUser";
 
 const Signin = () => {
     const history = useHistory();
@@ -28,6 +30,12 @@ const Signin = () => {
             }
         }).catch(err => console.log(err));
     }
+
+    useEffect(() => {
+        if(getCurrentUser()){
+            history.push("/mybooks")
+        }
+    }, [])
 
     return (
         <div className="min-h-screen bg-white flex">
