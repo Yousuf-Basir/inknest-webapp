@@ -133,8 +133,8 @@ const Sidebar = () => {
                                             <span className="flex w-full justify-between items-center">
                                                 <span className="flex min-w-0 items-center justify-between space-x-3">
                                                     <span className="flex-1 flex flex-col min-w-0">
-                                                        <span className="text-gray-900 text-sm font-medium truncate">{(currentUser.firstName + " " + currentUser.lastName) || ""}</span>
-                                                        <span className="text-gray-500 text-sm truncate">{currentUser.email || ""}</span>
+                                                        <span className="text-gray-900 text-sm font-medium truncate">{currentUser?(currentUser.firstName + " " + currentUser.lastName):""}</span>
+                                                        <span className="text-gray-500 text-sm truncate">{currentUser?currentUser.email:""}</span>
                                                     </span>
                                                 </span>
                                                 <SelectorIcon
