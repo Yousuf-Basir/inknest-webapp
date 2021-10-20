@@ -44,7 +44,7 @@ const Sidebar = () => {
     }
 
     const logOut = () => {
-        reactLocalStorage.set("accessToken", null);
+        reactLocalStorage.remove(("accessToken"));
         history.push("/signin");
     }
 
