@@ -7,6 +7,7 @@ import ShelfListDropdown from './ShelfListDropdown.component';
 import {MenuIcon, DotsCircleHorizontalIcon} from "@heroicons/react/outline"
 import { useStore } from 'react-redux';
 import { XCircleIcon } from '@heroicons/react/solid';
+import MoveToDropDown from './MoveToDropDown';
 
 
 
@@ -86,7 +87,8 @@ const DetailsSidebar = () => {
 
                     {
                         currentFile.fileInfo.fileUid
-                            ? <div className="flex justify-end mt-12">
+                            ? <div className="flex justify-end mt-12 space-x-4">
+                                <MoveToDropDown  />
                                 <button
                                     onClick={() => handleDeleteBook(currentFile.fileInfo.fileUid)}
                                     type="button"

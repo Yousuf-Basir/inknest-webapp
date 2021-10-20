@@ -1,18 +1,12 @@
 #book-wrapper {
-    width: 480px;
-    height: 640px;
-    overflow: hidden;
+    overflow: scroll;
     border: 1px solid #ccc;
     margin: 28px auto;
     background: #fff;
     border-radius: 0 5px 5px 0;
-    position: absolute;
 }
 
 #book-viewer {
-    width: 480px;
-    height: 660px;
-    margin: -30px auto;
     -moz-box-shadow: inset 10px 0 20px rgba(0, 0, 0, .1);
     -webkit-box-shadow: inset 10px 0 20px rgba(0, 0, 0, .1);
     box-shadow: inset 10px 0 20px rgba(0, 0, 0, .1);
@@ -20,11 +14,11 @@
 
 
 #viewer {
-    width: 100vw;
+    width: 100%;
     height: 580px;
     box-shadow: 0 0 4px #ccc;
-    padding: 10px 10px 0px 10px;
-    margin: 5px auto;
+    /* padding: 10px 10px 0px 10px; */
+    /* margin: 5px auto; */
     background: white;
 }
 

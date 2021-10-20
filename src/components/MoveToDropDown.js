@@ -11,8 +11,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const ShelfListDropdown = () => {
+const MoveToDropDown = () => {
   const { currentFile, setCurrentFile } = useContext(CurrentFileContext);
+  console.log(currentFile.fileInfo.fileUid)
 
   const accessToken = reactLocalStorage.get("accessToken");
 
@@ -33,32 +34,19 @@ const ShelfListDropdown = () => {
 
 
   // handle file upload
-  const uploadBook = async (selectedShelfUid, selectedShelfName) => {
-    setUploadingState("started");
+  const moveFile = async (selectedShelfUid, selectedShelfName) => {
 
-    // axios post data must a be a valid html FormData
-    // So creating html FormData object and appending data as html input with name attribute
-    var formData = new FormData();
-    formData.append('inknestFiles', currentFile.file);
-    formData.append('shelfUid', selectedShelfUid);
-
-    var pdfThumbnail = await localforage.getItem("pdfThumbnail");
-    if(pdfThumbnail){
-      formData.append('pdfThumbnail', pdfThumbnail);
-    }
-
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/file`, formData, {
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/move-file`, {
+      fileUid: currentFile.fileInfo.fileUid,
+      moveToShelfUid: selectedShelfUid
+    }, {
       headers: {
-        'content-type': 'multipart/form-data; boundary=<calculated when request is sent>"',
         "token": accessToken
       },
-      onUploadProgress: (progress) => console.log(progress)
     }).then(response => {
-      setUploadingState("finished");
+      alert("Book moved to " + selectedShelfName + " shelf");
     }).catch(err => {
       console.log(err);
-      setUploadingState("notStarted");
-      alert("Upload faild")
     });
   }
 
@@ -66,27 +54,17 @@ const ShelfListDropdown = () => {
     getUserShelf();
   }, []);
 
-  useEffect(() => {
-    setUploadingState("notStarted");
-  }, [currentFile])
-
 
   return (
     <Menu as="div" className="relative inline-block text-left">
       {({ open }) => (
         <>
           <div>
-            {
-              uploadingState == "notStarted"
-                ? <Menu.Button className="overflow-hidden relative space-x-2 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md  text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <span className="hidden lg:block">Save to shelf</span>
-                  <span className="lg:hidden block">Select shelf to save</span>
-                  <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                </Menu.Button>
-                : uploadingState == "started"
-                  ? <p>Uploading...</p>
-                  : <p>Upload finished</p>
-            }
+            <Menu.Button className="overflow-hidden relative space-x-2 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md  text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <span className="hidden lg:block">Move to shelf</span>
+              <span className="lg:hidden block">Select shelf to move</span>
+              <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+            </Menu.Button>
           </div>
 
           <Transition
@@ -108,7 +86,7 @@ const ShelfListDropdown = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <span
-                        onClick={() => { uploadBook(shelf.Shelf_UID, shelf.Shelf_Name) }}
+                        onClick={() => { moveFile(shelf.Shelf_UID, shelf.Shelf_Name) }}
                         className={classNames(
                           active ? 'bg-indigo-600 text-white' : 'text-gray-700',
                           'block px-4 py-2 text-sm'
@@ -128,4 +106,4 @@ const ShelfListDropdown = () => {
   )
 }
 
-export default ShelfListDropdown;
+export default MoveToDropDown;
