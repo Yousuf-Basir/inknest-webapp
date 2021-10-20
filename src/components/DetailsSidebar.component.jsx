@@ -24,7 +24,12 @@ const DetailsSidebar = () => {
                 headers: { "token": accessToken }
             }).then((response) => {
                 console.log(response.data)
-                history.push("/dashboard");
+                if(response.data == "not allowd"){
+                    alert("You can not delete files from shared shelf.")
+                }else{
+                    history.push("/mybooks");
+                }
+                
             }).catch(err => console.log(err));
         }
     }

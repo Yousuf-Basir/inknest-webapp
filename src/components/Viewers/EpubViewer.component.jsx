@@ -4,18 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 import "./epubStyle.css";
 
 const EpubViewer = ({ file }) => {
-    function removeElementsByClass(className) {
-        const elements = document.getElementsByClassName(className);
-        while (elements.length > 0) {
-            elements[0].parentNode.removeChild(elements[0]);
-        }
-    }
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         removeElementsByClass("epub-container");
-    //     }, 3000)
-    // }, [file])
 
     var ePubInstance = ePub(file);
     var rendition = ePubInstance.renderTo("viewer", {

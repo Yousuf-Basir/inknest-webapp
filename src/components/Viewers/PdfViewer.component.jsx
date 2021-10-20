@@ -14,6 +14,7 @@ export default ({ file }) => {
   const thumbmaker = (doc) => {
     return new Promise((resolve, reject)=>{
       const imageMaker = async (page) => {
+        console.log(page)
         const viewPort = page.getViewport({scale:0.6})
         const widht = viewPort.width; const height = viewPort.height;
         var canvas = document.createElement("canvas");
