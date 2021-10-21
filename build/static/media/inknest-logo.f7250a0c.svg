@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1366"
+   height="768"
+   viewBox="0 0 1366 768"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter18094"
+       x="-0.044855476"
+       y="-0.059120319"
+       width="1.112802"
+       height="1.1600879">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood18084" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite18086" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="0.6"
+         result="blur"
+         id="feGaussianBlur18088" />
+      <feOffset
+         dx="0.8"
+         dy="1.1"
+         result="offset"
+         id="feOffset18090" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite18092" />
+    </filter>
+  </defs>
+  <g
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:331.722px;line-height:1.25;font-family:'Sitka Banner';-inkscape-font-specification:'Sitka Banner, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#22002b;fill-opacity:1;stroke:none;stroke-width:85.7527;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="416.29089"
+       y="466.39703"
+       id="text1193"><tspan
+         id="tspan1191"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:331.722px;font-family:'Sitka Banner';-inkscape-font-specification:'Sitka Banner, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#22002b;fill-opacity:1;stroke:none;stroke-width:85.7527;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         x="416.29089"
+         y="466.39703">inknest</tspan></text>
+    <g
+       id="g18119"
+       transform="matrix(7.8839329,0,0,7.8839329,-465.8777,-610.97111)">
+      <rect
+         id="rect2338-7"
+         width="34.645493"
+         height="26.286057"
+         x="128.34622"
+         y="-27.113604"
+         style="fill:#cd87de;stroke:#393939;stroke-width:0.22808;stroke-opacity:1;filter:url(#filter18094)"
+         transform="matrix(0.487507,0.87311908,-0.96446486,0.26421116,0,0)"
+         ry="5.9858351" />
+      <rect
+         id="rect2338"
+         width="34.645493"
+         height="26.286057"
+         x="126.83572"
+         y="-28.304573"
+         style="fill:#22002b;stroke:#ffffff;stroke-width:0.22808;stroke-opacity:1"
+         transform="matrix(0.487507,0.87311908,-0.96446486,0.26421116,0,0)"
+         ry="5.9858351" />
+      <rect
+         id="rect2338-1"
+         width="34.645493"
+         height="26.286057"
+         x="123.5015"
+         y="-31.660501"
+         style="fill:#672178;stroke:#fefefe;stroke-width:0.228347;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="matrix(0.487507,0.87311908,-0.96446486,0.26421116,0,0)"
+         ry="5.9858351" />
+      <g
+         aria-label="i"
+         transform="rotate(-39.6627)"
+         id="text1193-1-2"
+         style="font-size:38.6838px;line-height:1.25;font-family:'Script MT Bold';-inkscape-font-specification:'Script MT Bold, Normal';fill:#f6d5ff;stroke-width:0.967096">
+        <path
+           d="m -4.3901881,134.01796 q 0,4.53325 -3.3432776,4.53325 -1.6244174,0 -2.7766203,-0.9822 1.0955372,-1.6622 1.6999715,-3.73994 1.4921974,0.92554 2.398849,0.92554 1.019983,0 2.0210774,-0.73665 z m 0.3777715,19.22856 q -4.4199264,4.64659 -6.6110014,4.64659 -1.208868,0 -2.039966,-1.22775 -0.831097,-1.24665 -0.831097,-3.11662 0,-4.02327 2.719955,-11.14426 l 4.7976977,-1.00109 h 0.2266628 l -1.8888574,5.91212 q -1.1710916,3.66438 -1.1710916,5.23214 0,0.62332 0.2644401,1.01998 0.2833286,0.37777 0.6988772,0.37777 0.7366544,0 1.4733088,-0.52888 0.755543,-0.54777 2.3610718,-2.34218 z"
+           id="path16863" />
+      </g>
+    </g>
+  </g>
+</svg>
