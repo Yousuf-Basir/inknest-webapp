@@ -45,7 +45,7 @@ const Signin = () => {
                 <div className="mx-auto w-full max-w-sm lg:w-96">
                     <div>
                         <img
-                            className="h-12 w-auto"
+                            className="h-48 w-auto"
                             src={inknestLogo}
                             alt="Workflow"
                         />

@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.19022659.chunk.css",
-    "main.js": "/static/js/main.cef0c324.chunk.js",
-    "main.js.map": "/static/js/main.cef0c324.chunk.js.map",
+    "main.css": "/static/css/main.4a9ffbbe.chunk.css",
+    "main.js": "/static/js/main.efe9912b.chunk.js",
+    "main.js.map": "/static/js/main.efe9912b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e105497d.js",
     "runtime-main.js.map": "/static/js/runtime-main.e105497d.js.map",
     "static/js/2.25cb8c46.chunk.js": "/static/js/2.25cb8c46.chunk.js",
@@ -12,15 +12,17 @@
     "3bc629d5f743a1772f7a775c5f5fb0c1.js": "/3bc629d5f743a1772f7a775c5f5fb0c1.js",
     "3bc629d5f743a1772f7a775c5f5fb0c1.js.LICENSE.txt": "/3bc629d5f743a1772f7a775c5f5fb0c1.js.LICENSE.txt",
     "index.html": "/index.html",
-    "static/css/main.19022659.chunk.css.map": "/static/css/main.19022659.chunk.css.map",
+    "service-worker.js": "/service-worker.js",
+    "service-worker.js.map": "/service-worker.js.map",
+    "static/css/main.4a9ffbbe.chunk.css.map": "/static/css/main.4a9ffbbe.chunk.css.map",
     "static/js/2.25cb8c46.chunk.js.LICENSE.txt": "/static/js/2.25cb8c46.chunk.js.LICENSE.txt",
     "static/media/background.f5177011.jpg": "/static/media/background.f5177011.jpg",
-    "static/media/inknest-logo.64fe356a.svg": "/static/media/inknest-logo.64fe356a.svg"
+    "static/media/inknest-logo.ab9f1e89.svg": "/static/media/inknest-logo.ab9f1e89.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.e105497d.js",
     "static/js/2.25cb8c46.chunk.js",
-    "static/css/main.19022659.chunk.css",
-    "static/js/main.cef0c324.chunk.js"
+    "static/css/main.4a9ffbbe.chunk.css",
+    "static/js/main.efe9912b.chunk.js"
   ]
 }

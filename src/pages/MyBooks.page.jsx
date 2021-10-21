@@ -119,7 +119,7 @@ const MyBooks = () => {
     }, []);
 
     return (
-        <div className="max-w-7xl sm:px-6 lg:px-8">
+        <div className="max-w-7xl sm:px-6 lg:px-8 overflow-scroll">
 
             {
                 shelfName && sharedBy
@@ -143,7 +143,7 @@ const MyBooks = () => {
                         onChange={(e) => setSelectedShelfUid(e.target.value)}
                         id="tabs"
                         name="tabs"
-                        className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                        className="overflow-scrollblock w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                         defaultValue="Recently Viewed"
                     >
                         {
@@ -176,7 +176,7 @@ const MyBooks = () => {
             </div>
 
             {/* Gallery */}
-            <section className="mt-8 pb-16" aria-labelledby="gallery-heading">
+            <section className="mt-8 pb-16 px-4 lg:px-0" aria-labelledby="gallery-heading">
                 {
                     !filesOfShelf.length?<NothingHere />:<ul
                     role="list"
