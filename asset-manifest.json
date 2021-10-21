@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/inknest-webapp/static/css/main.4a9ffbbe.chunk.css",
+    "main.js": "/inknest-webapp/static/js/main.5ac0616f.chunk.js",
+    "main.js.map": "/inknest-webapp/static/js/main.5ac0616f.chunk.js.map",
+    "runtime-main.js": "/inknest-webapp/static/js/runtime-main.8a833376.js",
+    "runtime-main.js.map": "/inknest-webapp/static/js/runtime-main.8a833376.js.map",
+    "static/js/2.f0afbd9d.chunk.js": "/inknest-webapp/static/js/2.f0afbd9d.chunk.js",
+    "static/js/2.f0afbd9d.chunk.js.map": "/inknest-webapp/static/js/2.f0afbd9d.chunk.js.map",
+    "static/js/3.3d66abfa.chunk.js": "/inknest-webapp/static/js/3.3d66abfa.chunk.js",
+    "static/js/3.3d66abfa.chunk.js.map": "/inknest-webapp/static/js/3.3d66abfa.chunk.js.map",
+    "3bc629d5f743a1772f7a775c5f5fb0c1.js": "/inknest-webapp/3bc629d5f743a1772f7a775c5f5fb0c1.js",
+    "3bc629d5f743a1772f7a775c5f5fb0c1.js.LICENSE.txt": "/inknest-webapp/3bc629d5f743a1772f7a775c5f5fb0c1.js.LICENSE.txt",
+    "index.html": "/inknest-webapp/index.html",
+    "service-worker.js": "/inknest-webapp/service-worker.js",
+    "service-worker.js.map": "/inknest-webapp/service-worker.js.map",
+    "static/css/main.4a9ffbbe.chunk.css.map": "/inknest-webapp/static/css/main.4a9ffbbe.chunk.css.map",
+    "static/js/2.f0afbd9d.chunk.js.LICENSE.txt": "/inknest-webapp/static/js/2.f0afbd9d.chunk.js.LICENSE.txt",
+    "static/media/background.f5177011.jpg": "/inknest-webapp/static/media/background.f5177011.jpg",
+    "static/media/inknest-logo.f7250a0c.svg": "/inknest-webapp/static/media/inknest-logo.f7250a0c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8a833376.js",
+    "static/js/2.f0afbd9d.chunk.js",
+    "static/css/main.4a9ffbbe.chunk.css",
+    "static/js/main.5ac0616f.chunk.js"
+  ]
+}
