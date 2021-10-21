@@ -3,20 +3,30 @@ import { useEffect, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 import "./epubStyle.css";
 import localforage from "localforage";
+import html2canvas from "html2canvas";
 
 const EpubViewer = ({ file }) => {
 
+    const [ePubInstance, setEPubInstance] = useState(null);
     const [rendition, setRendition] = useState(null);
-    var ePubInstance = ePub(file);
-
+    const [vImageSrc, setVImageSrc] = useState("");
+    
     useEffect(() => {
-        var _rendition = ePubInstance.renderTo("viewer", {
-            manager: "continuous",
-            flow: "paginated",
+        if(file){
+            setEPubInstance(ePub(file));
+        }
+    }, [file]);
 
-        });
-        setRendition(_rendition);
-    }, [])
+    useEffect(()=>{
+        if(ePubInstance){
+            var _rendition = ePubInstance.renderTo("viewer", {
+                manager: "continuous",
+                flow: "paginated",
+    
+            });
+            setRendition(_rendition);
+        }
+    }, [ePubInstance])
 
     useEffect(() => {
         if (rendition) {
@@ -43,7 +53,7 @@ const EpubViewer = ({ file }) => {
             });
 
             var displayed = rendition.display();
-            localforage.setItem("pdfThumbnail", null);
+            setTimeout(() => {getElement();}, 1000)
         }
     }, [rendition])
 
@@ -57,9 +67,38 @@ const EpubViewer = ({ file }) => {
         rendition.prev()
     }
 
+    const getElement = async () => {
+        var iframe = document.getElementsByTagName("iframe")[0];
+        var iframeBody = iframe.contentWindow.document.getElementsByTagName("body")[0];
+        var firstDiv = iframeBody.getElementsByTagName("div")[0];
+        // check if first div contains svg with image element
+        var svg = iframeBody.querySelector("svg image");
+        if(svg){
+            var imgSrc = svg.getAttribute("xlink:href");
+            setVImageSrc(imgSrc);
+            const vImage = document.getElementById("vImage");
+            convertToImage(vImage)
+        }else{
+            convertToImage(firstDiv);
+        }
+    }
+
+    const convertToImage = (htmlElement) => {
+        html2canvas(htmlElement, {
+            width: htmlElement.scrollWidth,
+            height: htmlElement.scrollHeight
+        }).then(canvas => {
+            const imageDataUri = canvas.toDataURL("image/webp", 0.2)
+            localforage.setItem("pdfThumbnail", imageDataUri);
+            const vImage = document.getElementById("vImage");
+            if(vImage){vImage.style.display = "none"}
+        });
+    }
+
 
     return (
         <div className="overflow-x-auto">
+            <img className="absolute top-0 left-0" id="vImage" src={vImageSrc} style={{objectFit: "contain"}} width="300px" height="400px" alt="" />
             <div className="flex justify-center items-center">
                 <span className="z-50 relative inline-flex shadow-sm rounded-md">
                     <button

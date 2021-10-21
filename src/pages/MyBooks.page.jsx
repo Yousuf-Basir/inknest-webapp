@@ -197,7 +197,7 @@ const MyBooks = () => {
                             >
 
                                 {
-                                    file.Mimetype == "pdf"
+                                    file.Mimetype == "pdf" ||  file.Mimetype == "epub"
                                         ? <img
                                             src={`${process.env.REACT_APP_SERVER_URL}/file/get-thumbnail-url?token=${accessToken}&fileName=${file.File_Name}`}
                                             alt=""
@@ -211,7 +211,7 @@ const MyBooks = () => {
                                             alt=""
                                             className={classNames(
                                                 file.File_UID == selectedFileUid ? '' : 'group-hover:opacity-75',
-                                                'object-cover pointer-events-none'
+                                                'object-cover pointer-events-none h-52'
                                             )}
                                         />
                                 }
