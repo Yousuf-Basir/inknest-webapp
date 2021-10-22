@@ -116,6 +116,7 @@ const Shelfs = () => {
             }).then(response => {
                 getUserShelf();
             }).catch(err => console.log(err));
+            getUserShelf();
         }
     }
 
