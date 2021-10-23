@@ -119,7 +119,7 @@ const MyBooks = () => {
     }, []);
 
     return (
-        <div className="max-w-7xl sm:px-6 lg:px-8 overflow-scroll">
+        <div className="max-w-7xl sm:px-6 lg:px-8 overflow-auto">
 
             {
                 shelfName && sharedBy
